@@ -7,6 +7,7 @@ import java.util.Set;
 import android.R.string;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -89,13 +90,8 @@ public class MainActivity extends Activity {
     }
 
     public void startProfileChangeActivity(View v){
-        AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
-
-        dlgAlert.setMessage("wrong password or username");
-        dlgAlert.setTitle("Error Message...");
-        dlgAlert.setPositiveButton("OK", null);
-        dlgAlert.setCancelable(true);
-        dlgAlert.create().show();
+    	startActivity(new Intent(this, SetProfileActivity.class));
+    	
 
     }
     
