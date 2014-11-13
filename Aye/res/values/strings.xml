@@ -4,5 +4,8 @@
     <string name="app_name">Aye</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="helpbuttonsdescription">help me buttons</string>
+    <string name="changebuttonsstring">Change Buttons</string>
+    <string name="changeprofilestring">Change Profile</string>
 
 </resources>
