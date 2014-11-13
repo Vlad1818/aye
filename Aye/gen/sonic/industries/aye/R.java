@@ -34,20 +34,29 @@ public final class R {
         public static final int ImageButton6=0x7f060005;
         public static final int ImageButton7=0x7f060008;
         public static final int ImageButton8=0x7f060007;
+        public static final int acceptBtn=0x7f06000d;
         public static final int buttonchange=0x7f060009;
         public static final int lahtzanchange=0x7f060000;
         public static final int profilechange=0x7f06000a;
+        public static final int radiusBar=0x7f06000c;
+        public static final int radiusBarProgress=0x7f06000b;
+        public static final int restoreBtn=0x7f06000e;
     }
     public static final class layout {
         public static final int activity_chat=0x7f030000;
         public static final int activity_main=0x7f030001;
+        public static final int activity_set_profile=0x7f030002;
     }
     public static final class string {
+        public static final int accept_btn=0x7f050008;
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
         public static final int changebuttonsstring=0x7f050004;
         public static final int changeprofilestring=0x7f050005;
+        public static final int choose_category=0x7f050006;
         public static final int hello_world=0x7f050001;
         public static final int helpbuttonsdescription=0x7f050003;
+        public static final int listening_radius=0x7f050007;
+        public static final int resotre_btn=0x7f050009;
     }
 }
