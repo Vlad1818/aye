@@ -7,5 +7,8 @@
     <string name="helpbuttonsdescription">help me buttons</string>
     <string name="changebuttonsstring">Change Buttons</string>
     <string name="changeprofilestring">Change Profile</string>
-
+	<string name="choose_category">Choose A Category:</string>
+	<string name="listening_radius">Listening Radius</string>
+	<string name="accept_btn">Accept</string>	
+	<string name="resotre_btn">Restore</string>
 </resources>
