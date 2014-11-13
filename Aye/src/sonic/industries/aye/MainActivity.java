@@ -3,6 +3,7 @@ package sonic.industries.aye;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import android.R.string;
 import android.app.Activity;
@@ -10,7 +11,12 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 
 
@@ -20,19 +26,53 @@ import android.view.View;
  * */
 
 public class MainActivity extends Activity {
-	
+
+	private static final Logger log = Logger.getLogger( MainActivity.class.getName() );
 	public static String appPrefs = "SolacePref";
+	public static String androidId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+    	androidId = Settings.Secure.getString(getContentResolver(),Settings.Secure.ANDROID_ID);
+    	
         SharedPreferences settings = getSharedPreferences(appPrefs, 0);
         String profile = settings.getString("BigBtn1", "Not Found");
         if(profile=="Not Found"){
         	Initiallize();
         }
+        
+
+        Intent i = new Intent(this, HttpClientService.class);
+        startService(i);
+        
+      	try{
+      		log.info("starting loading gps");
+            LocationManager locationManager = (LocationManager) 
+            		getSystemService(LOCATION_SERVICE);
+            Criteria criteria = new Criteria();
+            String bestProvider = locationManager.getBestProvider(criteria, false);
+            Location location = locationManager.getLastKnownLocation(bestProvider);
+
+        LocationListener loc_listener = new LocationListener() {
+
+            public void onLocationChanged(Location l) {}
+
+            public void onProviderEnabled(String p) {}
+
+            public void onProviderDisabled(String p) {}
+
+            public void onStatusChanged(String p, int status, Bundle extras) {}
+        };
+        locationManager
+                .requestLocationUpdates(bestProvider, 0, 0, loc_listener);
+  		log.info("did request to gps");
+        } catch (Exception e) {
+            log.info("Error"+e.getMessage());
+        }
+    
     }
     
     public void distressButtonHandler(View v) {
@@ -116,4 +156,6 @@ public class MainActivity extends Activity {
         editor.commit(); 
     }
 
+    
+    
 }   
